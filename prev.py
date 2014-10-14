@@ -1,4 +1,5 @@
 from flask import Flask, Response, request, send_file
+from json import dumps
 
 app = Flask(__name__)
 MOCK_PAGES = 10
@@ -45,7 +46,7 @@ def json_response(data, callback):
         headers = {
             "Access-Control-Allow-Origin": "*"
         }
-        return Response(data, content_type="application/json", headers=headers)
+        return Response(dumps(data), content_type="application/json", headers=headers)
 
 
 if __name__ == "__main__":
