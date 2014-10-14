@@ -15,7 +15,7 @@ def preview_info(token):
     res_data = {
         "status": "DONE",
         "pages": MOCK_PAGES,
-        "sizes": [[595, 841]] * MOCK_PAGES
+        "sizes": [[600, 848]] * MOCK_PAGES
         }
     return json_response(res_data, callback)
 
