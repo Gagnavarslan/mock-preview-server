@@ -2,7 +2,7 @@ from flask import Flask, Response, request, send_file
 
 app = Flask(__name__)
 MOCK_PAGES = 10
-PAGE_WIDTHS = ['150', '300', '500', '600', '800',
+PAGE_WIDTHS = ['100', '150', '300', '500', '600', '800',
                '1000', '1200', '1600', '2000']
 
 
