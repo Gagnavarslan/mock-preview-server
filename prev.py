@@ -1,6 +1,7 @@
 from flask import Flask, Response, request, send_file
 
 app = Flask(__name__)
+MOCK_PAGES = 10
 
 
 @app.route('/', methods=['GET'])
@@ -13,19 +14,8 @@ def preview_info(token):
     callback = request.args.get('callback', None)
     res_data = {
         "status": "DONE",
-        "pages": 10,
-        "sizes": [
-            [595, 841],
-            [595, 841],
-            [595, 841],
-            [595, 841],
-            [595, 841],
-            [595, 841],
-            [595, 841],
-            [595, 841],
-            [595, 841],
-            [595, 841]
-            ]
+        "pages": MOCK_PAGES,
+        "sizes": [[595, 841]] * MOCK_PAGES
         }
     return json_response(res_data, callback)
 
