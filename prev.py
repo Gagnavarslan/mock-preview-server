@@ -2,6 +2,8 @@ from flask import Flask, Response, request, send_file
 
 app = Flask(__name__)
 MOCK_PAGES = 10
+PAGE_WIDTHS = ['150', '300', '500', '600', '800',
+               '1000', '1200', '1600', '2000']
 
 
 @app.route('/', methods=['GET'])
@@ -24,11 +26,11 @@ def preview_info(token):
 def serve_previews(token):
     mime = 'image/jpeg'
     width = request.args.get('w', '100')
-    if width not in ['100', '600', '800']:
+    if width not in PAGE_WIDTHS:
         width = '800'
 
     res = send_file(
-        '{}.jpg'.format(width),
+        'images/{}.jpg'.format(width),
         mimetype=mime,
         cache_timeout=60*60*24*365,
         add_etags=False)
