@@ -24,8 +24,8 @@ def preview_info(token):
 def serve_previews(token):
     mime = 'image/jpeg'
     width = request.args.get('w', '100')
-    if width not in ['100', '600']:
-        width = '600'
+    if width not in ['100', '600', '800']:
+        width = '800'
 
     res = send_file(
         '{}.jpg'.format(width),
