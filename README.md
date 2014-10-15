@@ -4,7 +4,7 @@ Mock preview server for development. It will always server the same image for ev
 ### Installing
 ```
 virtualenv .
-bin/pip install -r requirements
+bin/pip install -r requirements.txt
 ```
 
 ### Running
