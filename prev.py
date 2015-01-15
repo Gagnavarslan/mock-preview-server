@@ -1,5 +1,6 @@
 from flask import Flask, Response, request, send_file
 from json import dumps
+import sys
 
 app = Flask(__name__)
 MOCK_PAGES = 10
@@ -46,8 +47,16 @@ def json_response(data, callback):
         headers = {
             "Access-Control-Allow-Origin": "*"
         }
-        return Response(dumps(data), content_type="application/json", headers=headers)
-
+        return Response(dumps(data), content_type="application/json",
+                        headers=headers)
 
 if __name__ == "__main__":
+    if len(sys.argv) > 1:
+        try:
+            num_pages = int(sys.argv[1])
+            MOCK_PAGES = num_pages
+            print "Number of pages set to {}".format(MOCK_PAGES)
+        except ValueError:
+            print ("Number of pages parameter must be an "
+                   "integer\nDefaulting to {}".format(MOCK_PAGES))
     app.run(host='0.0.0.0', port=8500)
