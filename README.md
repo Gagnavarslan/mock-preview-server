@@ -26,3 +26,16 @@ And to attach screen again to stop the process/session it's simply
 ```
 screen -r
 ```
+
+### Docker
+This mock preview server lives as a docker container at `ikornaselur/mock-preview-server`.
+
+To run the first time, simply run
+```
+docker run -d -p "8500:8500" --name="mockprev" -t ikornaselur/mock-preview-server 
+```
+
+Then to stop/start it's simply
+```
+docker stop/start mockprev
+```
