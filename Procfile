@@ -1,1 +1,1 @@
-web: python prev.py
+web: gunicorn prev:app --log-file=-
