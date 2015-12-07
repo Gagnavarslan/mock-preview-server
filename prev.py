@@ -1,5 +1,6 @@
 from flask import Flask, Response, request, send_file
 from json import dumps
+import os
 import sys
 
 app = Flask(__name__)
@@ -59,4 +60,4 @@ if __name__ == "__main__":
         except ValueError:
             print ("Number of pages parameter must be an "
                    "integer\nDefaulting to {}".format(MOCK_PAGES))
-    app.run(host='0.0.0.0', port=8500)
+    app.run(host='0.0.0.0', port=int(os.getenv('PORT', 8500)))
