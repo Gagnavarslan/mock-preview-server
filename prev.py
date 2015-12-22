@@ -14,7 +14,17 @@ PAGE_WIDTHS = ['100', '150', '300', '500', '600', '800',
 
 @app.route('/', methods=['GET'])
 def main():
-    return Response("OK")
+    return Response("""OK
+
+To receive successful preview info response:
+/info/any-token
+
+To receive a preview info response with failure status, request any of the following:
+/info/error
+/info/failure
+/info/not_supported
+/info/password_protected
+""".replace('\n', '<br>'))
 
 
 @app.route('/info/<token>', methods=['GET'])
