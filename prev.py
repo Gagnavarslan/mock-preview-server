@@ -7,6 +7,9 @@ app = Flask(__name__)
 MOCK_PAGES = 10
 PAGE_WIDTHS = ['100', '150', '300', '500', '600', '800',
                '1000', '1200', '1600', '1800', '2000']
+(DONE, NOT_SUPPORTED, PASSWORD_PROTECTED, FAILED, ERROR) = (
+    "DONE", "NOT_SUPPORTED", "PASSWORD_PROTECTED", "FAILED", "ERROR"
+)
 
 
 @app.route('/', methods=['GET'])
@@ -17,10 +20,15 @@ def main():
 @app.route('/info/<token>', methods=['GET'])
 def preview_info(token):
     callback = request.args.get('callback', None)
-    res_data = {
-        "status": "DONE",
-        "pages": MOCK_PAGES,
-        "sizes": [[600, 848]] * MOCK_PAGES
+    if token.upper() in (NOT_SUPPORTED, PASSWORD_PROTECTED, FAILED, ERROR):
+        res_data = {
+            "status": str(token.upper()),
+        }
+    else:
+        res_data = {
+            "status": DONE,
+            "pages": MOCK_PAGES,
+            "sizes": [[600, 848]] * MOCK_PAGES,
         }
     return json_response(res_data, callback)
 
