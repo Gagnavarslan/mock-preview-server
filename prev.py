@@ -1,7 +1,8 @@
-from flask import Flask, Response, request, send_file
-from json import dumps
 import os
 import sys
+from json import dumps
+
+from flask import Flask, Response, request, send_file
 
 app = Flask(__name__)
 MOCK_PAGES = 10
@@ -74,8 +75,8 @@ if __name__ == "__main__":
         try:
             num_pages = int(sys.argv[1])
             MOCK_PAGES = num_pages
-            print "Number of pages set to {}".format(MOCK_PAGES)
+            print("Number of pages set to {}".format(MOCK_PAGES))
         except ValueError:
-            print ("Number of pages parameter must be an "
-                   "integer\nDefaulting to {}".format(MOCK_PAGES))
+            print("Number of pages parameter must be an "
+                  "integer\nDefaulting to {}".format(MOCK_PAGES))
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 8500)))
