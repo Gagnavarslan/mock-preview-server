@@ -1,0 +1,38 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: mytestapp
+    extra: confbased
+  name: mock-preview
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mytestapp
+      extra: confbased
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: mytestapp
+        extra: confbased
+    spec:
+      containers:
+      - image: mock-preview:latest
+        imagePullPolicy: IfNotPresent
+        name: mock-preview
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        env:
+        - name: PORT
+          value: "8000"
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      terminationGracePeriodSeconds: 30
