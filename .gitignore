@@ -59,3 +59,11 @@ docs/_build/
 # PyBuilder
 target/
 
+# Build targets
+bin/
+include/
+
+# pip files
+pip-selfcheck.json
+
+.*.un~

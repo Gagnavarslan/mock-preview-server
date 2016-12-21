@@ -12,3 +12,8 @@ Stop local previewserver (if running) and run the mock one.
 ```
 python prev.py
 ```
+
+## Docker
+``
+docker run -e PORT=8000 --detach --publish 1337:8000 mock-preview
+```
